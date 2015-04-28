@@ -16,7 +16,7 @@ $ sudo chkconfig ntpd on
 
 PUPPET MASTER INSTALL
 
-$ sudo yum -y install http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm 
+$ sudo yum -y install http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
 $ sudo yum -y install puppet-server
 $ puppet master --version
 
@@ -45,7 +45,7 @@ Populate the file with the following:
 		dns_alt_names = puppet,puppetmaster,puppetmaster.benpiper.com
 
 -------------------------------------------------------------------------------
-		
+
 DEALING WITH SELINUX
 
 $ sudo setenforce permissive
@@ -56,7 +56,7 @@ $ sudo getenforce
 $ sudo cat /etc/sysconfig/selinux
 
 -------------------------------------------------------------------------------
-		
+
 GENERATING CERTIFICATES
 
 $ sudo puppet master --verbose --no-daemonize
@@ -70,7 +70,7 @@ $ sudo rm -r /var/lib/puppet/ssl
 $ sudo puppet master --verbose --no-daemonize
 
 -------------------------------------------------------------------------------
-		
+
 ADDING IPTABLES FIREWALL RULES
 
 $ sudo nano /etc/sysconfig/iptables
@@ -92,6 +92,7 @@ $ sudo cp /usr/share/puppet/ext/rack/config.ru /usr/share/puppet/rack/puppetmast
 $ sudo chown puppet:puppet /usr/share/puppet/rack/puppetmasterd/config.ru
 $ cd ~
 $ git clone https://github.com/benpiper/puppet-fundamentals-puppetmaster
+$ cd puppet-fundamentals-puppetmaster/
 $ nano puppetmaster.conf
 
 Verify the Passenger version is correct. Modify the SSLCertificateFile and SSLCertificateKeyFile to reflect the server's fully qualified DNS name. In the lab, the hostname is just "puppetmaster" so the filenames should both be "puppetmaster.pem"
