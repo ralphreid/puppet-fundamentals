@@ -10,11 +10,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "centos65-base"
 
   config.vm.define "puppetmaster" do |puppetmaster|
-  
+
     puppetmaster.vm.hostname = "puppetmaster"
-  
+    puppetmaster.vm.provision :hosts
     puppetmaster.vm.network "private_network", ip: "172.31.0.201"
-  
+    puppetmaster.vm.network :forwarded_port, id: 'puppetmaster', guest: 8140, host: 8140
+
   end
-  
+
 end
